@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   templateUrl: './products-page.component.html',
 })
 export class ProductsPageComponent implements OnInit {
-  public products$: Observable<any[]> | undefined;
+  public products$: Observable<any[]>;
 
   constructor(private data: DataService) {}
 
