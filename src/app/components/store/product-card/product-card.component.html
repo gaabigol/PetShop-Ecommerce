@@ -1,6 +1,6 @@
-<div class="uk-card uk-card-default uk-margin-large  uk-child-width-1-2@s uk-margin" uk-grid>
-    <div class="uk-card-media-left uk-cover-container ">
-        <img src="{{ product.images[0] }}" alt="" uk-cover>
+<div class="uk-card uk-card-default uk-margin-right" uk-grid>
+    <div class="uk-card-media-top uk-text-center">
+        <img *ngIf="product.image && product.image.length > 0" [src]="product.image[0]" height="150" width="150 " class="uk-margin-small-top uk-border-circle" alt="">
         <canvas width="600" height="400"></canvas>
     </div>
     <div class="uk-card-body">
