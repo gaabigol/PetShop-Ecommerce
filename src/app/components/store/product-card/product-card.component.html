@@ -1,11 +1,10 @@
 <div class="uk-card uk-card-default uk-margin-right" uk-grid>
     <div class="uk-card-media-top uk-text-center">
-        <img *ngIf="product.image && product.image.length > 0" [src]="product.image[0]" height="150" width="150 " class="uk-margin-small-top uk-border-circle" alt="">
-        <canvas width="600" height="400"></canvas>
+        <img *ngIf="product.image && product.image.length > 0" [src]="product.image[0]" height="150" width="150 " class="uk-margin-small-top" alt="">
     </div>
     <div class="uk-card-body">
-        <h3 class="uk-card-title">{{ product.price }}</h3>
-        <p>{{ product.title }}</p>
+        <h3 class="uk-card-title">{{ (product.price/100) | currency: 'BRL' }}</h3>
+        <p style="height: 50px;">{{ product.title }}</p>
         <button class="uk-button uk-button-default">
             <span class="uk-icon uk-margin-small-right" uk-icon="icon: cart"></span>
             Adicionar
