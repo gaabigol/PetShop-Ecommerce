@@ -22,13 +22,19 @@
               </a>
             </li>
             <li>
-              <a href="#">
+              <a [routerLink]="['/account']">
                 <span class="uk-icon uk-margin-small-right" uk-icon="icon: user"></span>
+                {{ user?.name }}
               </a>
             </li>
             <li>
-              <a>
+              <a (click)="logout()">
                 <span class="uk-icon uk-margin-small-right" uk-icon="icon: sign-out"></span>
+                <span *ngIf="loggingOut">Aguarde...</span>
+                <span *ngIf="loggingOut">
+                  <div class="uk-spinner" uk-spinner>
+                  </div>
+                </span>
               </a>
             </li>
           </ul>
