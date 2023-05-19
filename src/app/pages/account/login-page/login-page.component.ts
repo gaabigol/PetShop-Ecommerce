@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { User } from 'src/app/models/user.model';
 import { DataService } from 'src/app/service/data.service';
+import { Security } from 'src/app/util/security.util';
 import { CustomValidator } from 'src/app/validators/custom.validator';
 
 @Component({
@@ -11,7 +14,8 @@ export class LoginPageComponent implements OnInit {
   public form: FormGroup;
   public busy = false;
 
-  constructor(private service: DataService, private fb: FormBuilder) {
+  constructor(private service: DataService, private fb: FormBuilder,   private router: Router
+    ) {
     this.form = this.fb.group({
       username: [
         '',
@@ -33,41 +37,40 @@ export class LoginPageComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    const token = localStorage.getItem('petshop.token');
-    if(token){
+  ngOnInit(): void {
+    const token = Security.getToken();
+    if (token) {
       this.busy = true;
-      this
-    .service
-    .refreshToken()
-    .subscribe(
-      (data: any) => {
-        console.log(data);
-        localStorage.setItem('petshop.token', data.token);
-        this.busy = false;  
-      },
-      (error) => {
-        localStorage.clear();
-        this.busy = false;
-      });
+      this.service.refreshToken().subscribe(
+        (data: any) => {
+          this.busy = false;
+          this.setUser(data.customer, data.token);
+        },
+        (error) => {
+          localStorage.clear();
+          this.busy = false;
+        }
+      );
     }
   }
 
-  submit() {
+  submit(): void {
     this.busy = true;
-    this
-    .service
-    .authenticate(this.form.value)
-    .subscribe(
+    this.service.authenticate(this.form.value).subscribe(
       (data: any) => {
         console.log(data);
         this.busy = false;
-        localStorage.setItem('petshop.token', data.token); // refatorar: criar serviço para armazenar o token!!! 
+        this.setUser(data.customer, data.token);
       },
       (error) => {
         console.log(error);
         this.busy = false;
       }
     );
+  }
+
+  setUser(user: User, token: string): void {
+    Security.set(user, token);
+    this.router.navigateByUrl('/');
   }
 }

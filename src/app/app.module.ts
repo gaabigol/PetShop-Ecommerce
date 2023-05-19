@@ -16,6 +16,7 @@ import { ProductCardComponent } from './components/store/product-card/product-ca
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoadingComponent } from './components/shared/loading/loading.component';
 import { MaskDirective } from './directives/mask.directive';
+import { CustomValidator } from './validators/custom.validator';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { MaskDirective } from './directives/mask.directive';
     FramePageComponent,
     ProductCardComponent,
     LoadingComponent,
-    MaskDirective
+    MaskDirective, 
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule],
   providers: [],
