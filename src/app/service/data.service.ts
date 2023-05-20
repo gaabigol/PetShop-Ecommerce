@@ -28,4 +28,8 @@ export class DataService {
       `${this.url}/accounts/refresh-token`, null, { headers: this.composeHeaders() });
   }
 
+  create(data: any) {
+    return this.http.post(`${this.url}/account`, data);
+  }
+
 }
