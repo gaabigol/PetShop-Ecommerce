@@ -17,6 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoadingComponent } from './components/shared/loading/loading.component';
 import { MaskDirective } from './directives/mask.directive';
 import { CustomValidator } from './validators/custom.validator';
+import { AuthService } from './service/auth.service';
+import { DataService } from './service/data.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,7 @@ import { CustomValidator } from './validators/custom.validator';
     MaskDirective, 
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule],
-  providers: [],
+  providers: [DataService, AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
