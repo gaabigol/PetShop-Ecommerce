@@ -1,4 +1,4 @@
-import { AbstractControl, Validators, FormControl, ValidationErrors } from '@angular/forms';
+import { AbstractControl, Validators, FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 export class CustomValidator {
   constructor() {}
@@ -65,6 +65,7 @@ export class CustomValidator {
     if (!re.test(control.value)) {
       return { 'E-mail inválido': true };
     }
-    return ({});
+    return null;
   }
+  
 }

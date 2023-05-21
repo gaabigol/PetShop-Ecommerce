@@ -32,4 +32,7 @@ export class DataService {
     return this.http.post(`${this.url}/accounts`, data);
   }
 
+  resetPassword(data: any) {
+    return this.http.post(`${this.url}/accounts/reset-password`, data);
+  }
 }

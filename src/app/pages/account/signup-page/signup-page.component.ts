@@ -43,7 +43,7 @@ export class SignupPageComponent implements OnInit {
           Validators.minLength(5),
           Validators.maxLength(130),
           Validators.required,
-          CustomValidator.EmailValidator,
+          CustomValidator.EmailValidator
         ]),
       ],
       password: [
@@ -51,7 +51,7 @@ export class SignupPageComponent implements OnInit {
         Validators.compose([
           Validators.minLength(6),
           Validators.maxLength(20),
-          Validators.required,
+          Validators.required
         ]),
       ],
     });
