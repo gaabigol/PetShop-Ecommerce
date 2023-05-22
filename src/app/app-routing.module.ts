@@ -8,21 +8,25 @@ import { ProductsPageComponent } from './pages/store/products-page/products-page
 import { CartPageComponent } from './pages/store/cart-page/cart-page.component';
 import { PetsPageComponent } from './pages/account/pets-page/pets-page.component';
 import { AuthService } from './service/auth.service';
+import { ProfilePageComponent } from './pages/account/profile-page/profile-page.component';
 
 const routes: Routes = [
   {
     path: '',
     component: FramePageComponent,
-    canActivate: [AuthService],
     children: [
       { path: '', component: ProductsPageComponent },
-      { path: 'cart', component: CartPageComponent },
+      { path: 'cart', component: CartPageComponent, canActivate: [AuthService] },
     ],
   },
   {
     path: 'account',
     component: FramePageComponent,
-    children: [{ path: 'pets', component: PetsPageComponent }],
+    canActivate: [AuthService],
+    children: [
+      { path: '', component: ProfilePageComponent },
+      { path: 'pets', component: PetsPageComponent },
+    ],
   },
   { path: 'login', component: LoginPageComponent },
   { path: 'signup', component: SignupPageComponent },

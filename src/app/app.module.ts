@@ -21,6 +21,7 @@ import { MaskDirective } from './directives/mask.directive';
 import { CustomValidator } from './validators/custom.validator';
 import { AuthService } from './service/auth.service';
 import { DataService } from './service/data.service';
+import { ProfilePageComponent } from './pages/account/profile-page/profile-page.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { DataService } from './service/data.service';
     ProductCardComponent,
     LoadingComponent,
     MaskDirective,
+    ProfilePageComponent,
   ],
   imports: [
     BrowserModule,
