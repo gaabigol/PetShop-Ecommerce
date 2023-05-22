@@ -1,5 +1,5 @@
 import { CartItem } from '../models/Cart-Item.model';
-import { Cart } from '../models/Cart.model';
+import { Cart } from '../models/cart.model';
 
 export class CartUtil {
   public static get(): Cart {
@@ -30,12 +30,12 @@ export class CartUtil {
     localStorage.setItem('petshopcart', JSON.stringify(cart));
   }
 
-  public static update(cart: Cart): void{
+  public static update(cart: Cart){
     //salva/atualiza no localStorage
     localStorage.setItem('petshopcart', JSON.stringify(cart));
   }
 
-  public static clear(): void{
+  public static clear(){
     localStorage.removeItem('petshopcart');
   }
 }
