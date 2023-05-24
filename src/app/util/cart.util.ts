@@ -1,4 +1,4 @@
-import { CartItem } from '../models/Cart-Item.model';
+import { CartItem } from '../models/cart-item.model';
 import { Cart } from '../models/cart.model';
 
 export class CartUtil {
